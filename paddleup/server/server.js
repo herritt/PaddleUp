@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
+const eventRoutes = require("./routes/eventRoutes");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const app = express();
@@ -12,6 +13,8 @@ app.use(cors());
 app.get("/", (req, res) => {
   res.send("Server response - root");
 });
+
+app.use("/api", eventRoutes);
 
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
