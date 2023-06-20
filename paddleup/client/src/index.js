@@ -2,12 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import Root from "./components/Root";
+import NextEvent from "./components/NextEvent";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Root />
+    <NextEvent />
   </React.StrictMode>
 );
 

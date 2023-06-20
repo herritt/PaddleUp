@@ -4,7 +4,7 @@ function Root() {
   const [message, setMessage] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3001/")
+    fetch("/")
       .then((response) => response.text()) // We expect a text response in this case
       .then((data) => setMessage(data))
       .catch((err) => console.error(err));

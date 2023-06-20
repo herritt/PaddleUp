@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Event = require("./models/event");
+const Event = require("../models/event");
 
 // Create a new event
 router.post("/events", async (req, res) => {
@@ -50,6 +50,22 @@ router.delete("/events/:id", async (req, res) => {
   } catch (err) {
     res.status(500).send();
   }
+});
+
+// Get next event
+router.get("/events/next", (req, res) => {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  Event.find({ Date: { $gte: today } })
+    .sort({ Date: 1 })
+    .limit(1)
+    .then((events) => {
+      res.json(events[0]);
+    })
+    .catch((err) => {
+      res.status(500).send(err);
+    });
 });
 
 module.exports = router;
